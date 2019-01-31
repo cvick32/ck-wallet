@@ -27,24 +27,26 @@ export default class TransactionsDisplayComponent extends React.Component {
       var outputs = JSON.parse(value);
       this.setState({ outputs: outputs });
 
-      for(let outputCounter = 0; outputCounter < outputs.length; outputCounter++) {
-        let output = outputs[outputCounter];
-        let transactionId = output["creationTx"];
-        let transactionObject = {};
-        let finalTransactions = [];
-
-        api.getTransaction(transactionId)
-        .then((response) => {
-          let transactionCopy = [...this.state.transactions];
+      if (outputs) {
+        for(let outputCounter = 0; outputCounter < outputs.length; outputCounter++) {
+          let output = outputs[outputCounter];
+          let transactionId = output["creationTx"];
           let transactionObject = {};
-          transactionObject[transactionId] = response;
-          transactionCopy.push(transactionObject);
-          this.setState({ transactions: transactionCopy });
-          AsyncStorage.setItem("transactions", JSON.stringify(transactionCopy));
-        })
-        .catch(err => console.log(err));
-        AsyncStorage.getItem("transactions")
-        .then((value) => { this.state.transactions = JSON.parse(value); });
+          let finalTransactions = [];
+
+          api.getTransaction(transactionId)
+          .then((response) => {
+            let transactionCopy = [...this.state.transactions];
+            let transactionObject = {};
+            transactionObject[transactionId] = response;
+            transactionCopy.push(transactionObject);
+            this.setState({ transactions: transactionCopy });
+            AsyncStorage.setItem("transactions", JSON.stringify(transactionCopy));
+          })
+          .catch(err => console.log(err));
+          AsyncStorage.getItem("transactions")
+          .then((value) => { this.state.transactions = JSON.parse(value); });
+        }
       }
     });
   }
