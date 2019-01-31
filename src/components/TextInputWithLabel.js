@@ -16,7 +16,7 @@ export default class TextInputWithLabelComponent extends React.Component {
         style={styles.textInputStyle}
         placeholder={this.props.placeholder}
         placeholderTextColor={DETAIL_TEXT_COLOR}
-        onChangeText={(text) => {this.props.update(text);}}
+        onChangeText={(text) => {this.props.text = text}}
         keyboardType={"numeric"}
         value={this.state.text}>
       </TextInput>
