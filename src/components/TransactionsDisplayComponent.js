@@ -25,8 +25,9 @@ export default class TransactionsDisplayComponent extends React.Component {
     .then(value => {
       var outputs = JSON.parse(value);
       this.setState({ outputs: outputs });
-
+      console.log("in get Transactions");
       if (outputs) {
+        console.log("in get Transactions, has outputs");
         for(let outputCounter = 0; outputCounter < outputs.length; outputCounter++) {
           let output = outputs[outputCounter];
           let transactionId = output["creationTx"];

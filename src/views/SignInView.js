@@ -1,10 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View, Dimensions, AsyncStorage, StatusBar,
-Image} from 'react-native';
+import { StyleSheet, Text, TextInput, View, Dimensions, AsyncStorage, StatusBar, Image} from 'react-native';
+
 import ButtonWithActionComponent from '../components/ButtonWithActionComponent';
-import { APP_BACKGROUND_COLOR,
-  DETAIL_TEXT_COLOR,
-  FORM_FIELD_BACKGROUND_COLOR } from '../constants/styles.js';
+import { APP_BACKGROUND_COLOR, DETAIL_TEXT_COLOR, FORM_FIELD_BACKGROUND_COLOR } from '../constants/styles.js';
 import WalletRestApi from '../api/WalletRestApi';
 import {onSignIn} from '../helpers/auth';
 
@@ -17,7 +15,6 @@ export default class SignInViewComponent extends React.Component {
 
   signIn() {
     const api = new WalletRestApi();
-    var user_id;
 
     api.login(this.state.text, this.state.passwordText)
     .then(response => {

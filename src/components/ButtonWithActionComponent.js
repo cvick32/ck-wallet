@@ -23,7 +23,7 @@ export default class ButtonWithActionComponent extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
+    flex: -1,
     flexDirection: "row",
     backgroundColor: BUTTON_BACKGROUND_COLOR,
     width: 150,

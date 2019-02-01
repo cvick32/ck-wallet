@@ -5,6 +5,7 @@ import MainView from '../views/MainView';
 import RegisterView from '../views/RegisterAccountView';
 import SidebarView from '../views/SidebarView';
 import WalletView from '../views/WalletView';
+import GenerateKeyView from '../views/GenerateKeyView';
 import BarCodeScannerComponent from '../components/BarCodeScannerComponent';
 
 export const Drawer = createDrawerNavigator({
@@ -14,7 +15,13 @@ export const Drawer = createDrawerNavigator({
    Wallet: {
      screen: WalletView,
      navigationOptions: {
-       header: null,
+       header: null
+     }
+   },
+   Key: {
+     screen: GenerateKeyView,
+     navigationOptions: {
+       header: null
      }
    },
    SignOut: {

@@ -27,7 +27,7 @@ export default class SideBarView extends React.Component {
             <View style={{ flex: 1}} />
           </View>
           <View style={styles.drawerItemsContainer}>
-            <View style={{ flexDirection: 'row', justifyContent: 'flex-start', width: 200, borderColor: 'white', borderBottomWidth: 0.7 }}>
+            <View style={[styles.items, styles.border]}>
               <Button
                 color={'white'}
                 title={"Home"}
@@ -36,13 +36,19 @@ export default class SideBarView extends React.Component {
                   this.props.navigation.dispatch(DrawerActions.closeDrawer());}}
               />
             </View>
-            <View style={{ flexDirection: 'row', width: 200, borderColor: 'white', borderBottomWidth: 0.8, justifyContent:'flex-start' }}>
+            <View style={[styles.items, styles.border]}>
               <Button title={"Create Wallet"}
                 color={'white'}
                 onPress={() => this.props.navigation.navigate('Wallet')}
               />
             </View>
-            <View style={{flexDirection: 'row', justifyContent: 'flex-start'}}>
+            <View style={[styles.items, styles.border]}>
+              <Button title={"Generate Key"}
+                color={'white'}
+                onPress={() => this.props.navigation.navigate('Key')}
+              />
+            </View>
+            <View style={styles.items}>
               <Button
                 color={'white'}
                 title={"Sign Out"}
@@ -74,4 +80,13 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'white'
   },
+  items: {
+    flexDirection: 'row', 
+    justifyContent: 'flex-start', 
+    width: 200, 
+  },
+  border: {
+    borderColor: 'white', 
+    borderBottomWidth: 1 
+  }
 })
