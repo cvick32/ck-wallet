@@ -1,5 +1,3 @@
-import { AsyncStorage } from 'react-native';
-import WalletRestApi from '../api/WalletRestApi';
 import { genKeyPair } from '../helpers/coinHelper.js';
 var CryptoJS = require('crypto-js');
 

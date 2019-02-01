@@ -1,7 +1,7 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, Dimensions, ScrollView, StatusBar, TextInput, AsyncStorage } from 'react-native';
+import { StyleSheet, View, Dimensions, StatusBar, TextInput, AsyncStorage } from 'react-native';
 import { APP_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR, DETAIL_TEXT_COLOR } from '../constants/styles';
-import { NavigationActions, DrawerActions } from 'react-navigation';
+import { DrawerActions } from 'react-navigation';
 import ButtonWithActionComponent from '../components/ButtonWithActionComponent';
 import HeaderComponent from '../components/HeaderComponent';
 import WalletRestApi from '../api/WalletRestApi';

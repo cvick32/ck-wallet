@@ -1,8 +1,6 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, Dimensions, Button,
-TouchableHighlight} from 'react-native';
+import { Image, StyleSheet, Text, View, Button,TouchableHighlight} from 'react-native';
 import { NavigationActions, DrawerActions } from 'react-navigation';
-import FORM_FIELD_BACKGROUND_COLOR from '../constants/styles';
 import { onSignOut,  } from '../helpers/auth';
 
 export default class SideBarView extends React.Component {

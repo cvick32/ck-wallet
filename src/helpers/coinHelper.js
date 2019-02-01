@@ -1,9 +1,7 @@
-import { AsyncStorage } from 'react-native';
 var CryptoJS = require('crypto-js');
 var base64js = require('base64-js');
 var elliptic = require('elliptic');
 var ec = new elliptic.ec('secp256k1');
-import WalletRestApi from '../api/WalletRestApi';
 
 
 function wordToByteArray(wordArray) {

@@ -1,16 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions, StatusBar } from 'react-native';
 import { APP_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR, DETAIL_TEXT_COLOR } from '../constants/styles.js';
-import ButtonWithActionComponent from '../components/ButtonWithActionComponent';
 import SendReceiverSwitchComponent from '../components/SendReceiverSwitchComponent';
 import SendTransactionComponent from '../components/SendTransactionComponent';
-import BalanceHeaderComponent from '../components/BalanceHeaderComponent';
 import TransactionsDisplayComponent from '../components/TransactionsDisplayComponent';
 import QRCodeComponent from '../components/qrCodeComponent';
-import BarCodeScannerComponent from '../components/BarCodeScannerComponent';
 import HeaderComponent from '../components/HeaderComponent';
-import {onSignOut} from '../helpers/auth.js';
-
 
 export default class MainView extends React.Component {
 

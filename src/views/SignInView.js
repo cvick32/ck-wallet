@@ -7,7 +7,6 @@ import { APP_BACKGROUND_COLOR,
   FORM_FIELD_BACKGROUND_COLOR } from '../constants/styles.js';
 import WalletRestApi from '../api/WalletRestApi';
 import {onSignIn} from '../helpers/auth';
-var CryptoJS = require("crypto-js");
 
 export default class SignInViewComponent extends React.Component {
 

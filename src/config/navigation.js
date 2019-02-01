@@ -1,5 +1,3 @@
-import React from 'react';
-import { Image, StyleSheet, Text, View, Dimensions } from 'react-native';
 import { createStackNavigator, createDrawerNavigator, createAppContainer } from "react-navigation";
 
 import SignInView from '../views/SignInView';
@@ -8,7 +6,6 @@ import RegisterView from '../views/RegisterAccountView';
 import SidebarView from '../views/SidebarView';
 import WalletView from '../views/WalletView';
 import BarCodeScannerComponent from '../components/BarCodeScannerComponent';
-import FORM_FIELD_BACKGROUND_COLOR from '../constants/styles';
 
 export const Drawer = createDrawerNavigator({
    Main: {
