@@ -61,6 +61,7 @@ export default class MainView extends React.Component {
           onPressHandler={this.navHandler}
           showBalance
           source={require('../assets/drawer_navigation.png')}
+          style={{padding: '100'}}
         />
         <View style={{ marginTop: 10 }}>
           <SendReceiverSwitchComponent

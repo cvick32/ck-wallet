@@ -1,10 +1,9 @@
 import React from 'react';
 import { StyleSheet, View, Text, AsyncStorage, Dimensions, FlatList } from 'react-native';
-import ButtonWithImageComponent from './ButtonWithImageComponent';
 import SlidingDrawerComponent from './SlidingDrawerComponent';
 import {APP_BACKGROUND_COLOR,FORM_FIELD_BACKGROUND_COLOR,DETAIL_TEXT_COLOR} from '../constants/styles.js';
 import WalletRestApi from '../api/WalletRestApi';
-import { Camera, Permissions } from 'expo';
+import { Camera } from 'expo';
 
 export default class TransactionsDisplayComponent extends React.Component {
   constructor(props) {

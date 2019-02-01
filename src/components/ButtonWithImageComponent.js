@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, TextInput, TouchableHighlight, Image} from 'react-native';
+import {StyleSheet, View, TouchableHighlight, Image} from 'react-native';
 import { BUTTON_BACKGROUND_COLOR } from "../constants/styles.js";
 
 export default class ButtonWithImageComponent extends React.Component {

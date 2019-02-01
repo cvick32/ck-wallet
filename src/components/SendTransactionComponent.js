@@ -1,13 +1,11 @@
 import React from 'react';
-import {Dimensions, StyleSheet, Text, View, TextInput, AsyncStorage} from 'react-native';
+import { StyleSheet, Text, View, TextInput, AsyncStorage} from 'react-native';
 import TextInputWithDetailComponent from './TextInputWithDetailComponent';
-import TextInputWithLabelComponent from './TextInputWithLabel';
+import TextInputWithLabelComponent from './TextInputWithLabelComponent';
 import ButtonWithActionComponent from './ButtonWithActionComponent';
 import WalletRestApi from '../api/WalletRestApi';
-var CryptoJS = require('crypto-js');
-import { onSignOut } from '../helpers/auth.js';
 import { sendToAddress } from '../helpers/coinHelper.js';
-import { getUtxos, getNewKey } from '../helpers/blockchainHelper.js';
+import { getNewKey } from '../helpers/blockchainHelper.js';
 
 export default class SendTransactionComponent extends React.Component {
   constructor(props) {
@@ -74,22 +72,17 @@ export default class SendTransactionComponent extends React.Component {
             }
           })
           .catch((err) => err);
-    }
-  });
-
- }
+          }
+        });
+  }
 
     updateReceivingAddress = (value)  => {
       this.setState({receivingAddress: value});
-      console.log(this.state.receivingAddress);
     }
 
-    update = (value)  => {
+    updateCoinAmount = (value)  => {
       this.setState({coinAmount: value});
-      console.log(this.state.coinAmount);
     }
-
-
 
   render() {
     return (
@@ -106,7 +99,7 @@ export default class SendTransactionComponent extends React.Component {
           <TextInputWithLabelComponent
             placeholder={"Amount"}
             labelText={"K320"}
-            update={val => this.update(val)}
+            update={val => this.updateCoinAmount(val)}
           />
         </View>
         <View style={{flex: 0, flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>

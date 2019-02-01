@@ -1,7 +1,6 @@
 import React from 'react';
 import { AsyncStorage, StyleSheet, Text, View, Dimensions } from 'react-native';
-import { APP_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR, DETAIL_TEXT_COLOR } from '../constants/styles.js';
-import WalletRestApi from '../api/WalletRestApi';
+import { APP_BACKGROUND_COLOR } from '../constants/styles.js';
 
 export default class BalanceHeaderComponent extends React.Component {
 

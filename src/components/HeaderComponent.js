@@ -1,7 +1,6 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, Dimensions, ScrollView, TouchableHighlight } from 'react-native';
-import { APP_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR } from '../constants/styles';
-import TextInputWithLabelComponent from '../components/TextInputWithLabel';
+import { Image, StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { APP_BACKGROUND_COLOR, } from '../constants/styles';
 import BalanceHeaderComponent from '../components/BalanceHeaderComponent';
 
 export default class HeaderComponent extends React.Component {

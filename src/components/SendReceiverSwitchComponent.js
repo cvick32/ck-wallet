@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyleSheet, View, Text, TextInput, TouchableHighlight, Image} from 'react-native';
-import {BUTTON_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR, DETAIL_TEXT_COLOR, APP_BACKGROUND_COLOR} from "../constants/styles.js";
+import {StyleSheet, View, Text, TouchableHighlight, Image} from 'react-native';
+import {BUTTON_BACKGROUND_COLOR, APP_BACKGROUND_COLOR} from "../constants/styles.js";
 
 export default class SendReceiverSwitchComponent extends React.Component {
 

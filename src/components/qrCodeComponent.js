@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, AsyncStorage, Clipboard, Alert } from 'react-native';
-import { APP_BACKGROUND_COLOR } from '../constants/styles';
 import LabelWithActionComponent from './LabelWithActionComponent';
 import QRCode from 'react-native-qrcode';
 

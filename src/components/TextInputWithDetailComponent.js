@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, TextInput} from 'react-native';
+import {StyleSheet, View, TextInput} from 'react-native';
 import ButtonWithImageComponent from './ButtonWithImageComponent';
 import {FORM_FIELD_BACKGROUND_COLOR,DETAIL_TEXT_COLOR} from '../constants/styles.js';
 
@@ -16,7 +16,7 @@ export default class TextInputWithDetailComponent extends React.Component {
         style={styles.textInputStyle}
         placeholder={this.props.placeholder}
         placeholderTextColor={DETAIL_TEXT_COLOR}
-        onChangeText={(text) => {this.props.update(text);}}
+        onChangeText={(text) => {this.props.update(text); this.setState({ text: text});}}
         value={this.state.text}>
       </TextInput>
       <ButtonWithImageComponent

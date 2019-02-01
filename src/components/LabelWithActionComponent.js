@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, TextInput } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import ButtonWithImageComponent from './ButtonWithImageComponent';
 import { FORM_FIELD_BACKGROUND_COLOR } from '../constants/styles.js';
 

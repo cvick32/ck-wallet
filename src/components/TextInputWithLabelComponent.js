@@ -16,8 +16,9 @@ export default class TextInputWithLabelComponent extends React.Component {
         style={styles.textInputStyle}
         placeholder={this.props.placeholder}
         placeholderTextColor={DETAIL_TEXT_COLOR}
-        onChangeText={(text) => {this.props.text = text}}
+        onChangeText={(text) => {this.props.update(text); this.setState({text: text}); console.log(this.state.text)}}
         keyboardType={"numeric"}
+        maxLength={12}
         value={this.state.text}>
       </TextInput>
       <View style={styles.textContainer}>
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     height: 46,
   },
   textInputStyle: {
-    flex: 0,
+    flex: -1,
     backgroundColor: FORM_FIELD_BACKGROUND_COLOR,
     color: 'white',
     width: 306,
@@ -46,6 +47,7 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
   },
   textContainer: {
+    flex: -1,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
