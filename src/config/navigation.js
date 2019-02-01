@@ -1,12 +1,12 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, Dimensions } from 'react-native';
-import { createStackNavigator, createDrawerNavigator } from "react-navigation";
+import { createStackNavigator, createDrawerNavigator, createAppContainer } from "react-navigation";
 
 import SignInView from '../views/SignInView';
 import MainView from '../views/MainView';
 import RegisterView from '../views/RegisterAccountView';
 import SidebarView from '../views/SidebarView';
-import WalletView from '../views/CreateWalletView';
+import WalletView from '../views/WalletView';
 import BarCodeScannerComponent from '../components/BarCodeScannerComponent';
 import FORM_FIELD_BACKGROUND_COLOR from '../constants/styles';
 
@@ -30,7 +30,7 @@ export const Drawer = createDrawerNavigator({
   drawerBackgroundColor: 'black',
 });
 
-export const SignedIn = createStackNavigator({
+const SignedInNav = createStackNavigator({
   Main: {
     screen: Drawer,
     navigationOptions: {
@@ -46,7 +46,9 @@ export const SignedIn = createStackNavigator({
   initialRouteName: 'Main',
 });
 
-export const SignedOut = createStackNavigator({
+export const SignedIn = createAppContainer(SignedInNav);
+
+const SignedOutNav = createStackNavigator({
   Profile: {
     screen: SignInView,
     navigationOptions: {
@@ -67,3 +69,5 @@ export const SignedOut = createStackNavigator({
   },
   initialRouteName: 'Profile',
 });
+
+export const SignedOut = createAppContainer(SignedOutNav);

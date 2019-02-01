@@ -64,7 +64,6 @@ export default class TransactionsDisplayComponent extends React.Component {
         }
       }
     }
-
   }
 
   calculateDateForTransaction(txKey, transactions) {

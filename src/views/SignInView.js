@@ -16,7 +16,7 @@ export default class SignInViewComponent extends React.Component {
     this.state = {token:"", user_id:"", text: "", passwordText: "", balance: 0};
   }
 
-  signInHandler() {
+  signIn() {
     const api = new WalletRestApi();
     var user_id;
 
@@ -50,7 +50,7 @@ export default class SignInViewComponent extends React.Component {
     .catch(err => console.log(err));
   }
 
-  async getBalance(publickeys, token, api) {
+  getBalance(publickeys, token, api) {
       var outputs = [];
       var balance = 0;
       for(var j=0; j < publickeys.length; j++) {
@@ -113,7 +113,7 @@ export default class SignInViewComponent extends React.Component {
           <Text onPress={() => this.props.navigation.navigate("ForgotPassword")} style={{color: DETAIL_TEXT_COLOR, marginBottom: 20}}> Forgot Password? </Text>
         </View>
 
-        <ButtonWithActionComponent onPressHandler={() => { this.signInHandler()}} text="Sign In" source={require('../assets/right_arrow_3.png')}/>
+        <ButtonWithActionComponent onPressHandler={() => { this.signIn()}} text="Sign In" source={require('../assets/right_arrow_3.png')}/>
 
         <View style={{marginTop: 50, flexDirection: 'row'}} >
           <Text style={{color: DETAIL_TEXT_COLOR}}> Don't have an account? </Text>

@@ -3,10 +3,29 @@ import { Image, StyleSheet, Text, View, Dimensions, ScrollView, StatusBar } from
 import { APP_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR } from '../constants/styles';
 import { NavigationActions, DrawerActions } from 'react-navigation';
 import TextInputWithLabelComponent from '../components/TextInputWithLabel';
-import ButtonComponent from '../components/ButtonComponent';
+import ButtonWithActionComponent from '../components/ButtonWithActionComponent';
 import HeaderComponent from '../components/HeaderComponent';
 
+
 export default class WalletView extends React.Component {
+
+  createWallet() {
+    const api = new WalletRestApi();
+    
+    api.login(this.state.text, this.state.passwordText)
+    .then(response => {
+      if(response.success) {
+        AsyncStorage.setItem("token", response.token);
+        AsyncStorage.setItem("user_id", response.user_id);
+        this.retrieveKeys(response.user_id, response.token);
+        onSignIn().then(() => this.props.navigation.navigate("Main"));
+      }
+    })
+    .catch(err => console.log(err));
+
+  }
+
+
   render() {
     return (
       <View style={styles.container}>
@@ -27,7 +46,7 @@ export default class WalletView extends React.Component {
              <TextInputWithLabelComponent placeholder={"Asset Name"}/>
            </View>
            <View style={{ margin: 10}}>
-             <ButtonComponent text={"Create New Wallet"}/>
+             <ButtonWithActionComponent onPressHandler={() => { this.createWallet()}} text={"Create New Wallet"}/>
            </View>
           </View>
       </View>
@@ -43,9 +62,12 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height,
     backgroundColor: APP_BACKGROUND_COLOR,
   },
+  HeaderComponent: {
+    marginTop: 50
+  },
   walletContainer: {
     flex: 1,
-    marginTop: 5,
+    marginTop: 15,
     flexDirection: 'column',
     alignItems: 'center',
   },

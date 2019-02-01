@@ -1,7 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View, Dimensions } from 'react-native';
-import BalanceHeaderComponent from './src/components/BalanceHeaderComponent';
-import APP_BACKGROUND_COLOR from './src/constants/styles';
+
 import { SignedIn, SignedOut } from './src/config/navigation';
 import { isSignedIn } from "./src/helpers/auth";
 
