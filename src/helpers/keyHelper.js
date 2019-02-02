@@ -1,7 +1,5 @@
-import { genKeyPair } from '../helpers/coinHelper.js';
+import { genKeyPair } from './coinHelper.js';
 var CryptoJS = require('crypto-js');
-
-var api;
 
 export const genKey =  function(label, password) {
         var promise = new Promise(function(resolve, reject) {});
@@ -32,8 +30,7 @@ export const genKey =  function(label, password) {
             salt: CryptoJS.enc.Base64.stringify(salt)
         };
 
-
-        return Promise.resolve(keyData);
+        return promise.resolve(keyData);
 }
 
 export const getNewKey = function(id, label, password, api) {

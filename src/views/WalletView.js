@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Dimensions, StatusBar, TextInput, AsyncStorage } from 'react-native';
 import { APP_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR, DETAIL_TEXT_COLOR } from '../constants/styles';
 import { DrawerActions } from 'react-navigation';
-import ButtonWithActionComponent from '../components/ButtonWithActionComponent';
+import ButtonComponent from '../components/ButtonComponent';
 import HeaderComponent from '../components/HeaderComponent';
 import WalletRestApi from '../api/WalletRestApi';
 
@@ -73,7 +73,7 @@ export default class WalletView extends React.Component {
               placeholderTextColor={DETAIL_TEXT_COLOR}
             />
            <View style={{ margin: 10}}>
-             <ButtonWithActionComponent onPressHandler={() => { this.createWallet()}} text={"Create New Wallet"}/>
+             <ButtonComponent onPressHandler={() => { this.createWallet()}} text={"Create New Wallet"}/>
            </View>
       </View>
       </View>

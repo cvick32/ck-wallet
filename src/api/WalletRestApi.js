@@ -20,12 +20,16 @@ export default class WalletRestApi extends RestClient {
     return this.POST('/api/users', {"name": username, "password": CryptoJS.SHA3(password).toString()});
   }
 
+  generateKey(user_id) {
+    return this.POST('/api/users/' + user_id + '/keys');
+  }
+
   getKeys(user_id) {
-    return this.GET('/api/users/'+user_id+"/keys");
+    return this.GET('/api/users/' + user_id + '/keys');
   }
 
   updateKeys(user_id, res) {
-    return this.POST('/api/users/'+user_id+"/keys", res);
+    return this.POST('/api/users/' + user_id + '/keys', res);
   }
 
   getTxos(publicKey) {

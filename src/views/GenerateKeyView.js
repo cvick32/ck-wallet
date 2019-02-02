@@ -2,41 +2,33 @@ import React from 'react';
 import { StyleSheet, View, Dimensions, StatusBar, TextInput, AsyncStorage } from 'react-native';
 import { APP_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR, DETAIL_TEXT_COLOR } from '../constants/styles';
 import { DrawerActions } from 'react-navigation';
-import ButtonWithActionComponent from '../components/ButtonWithActionComponent';
+import ButtonComponent from '../components/ButtonComponent';
 import HeaderComponent from '../components/HeaderComponent';
 import WalletRestApi from '../api/WalletRestApi';
+
+import BlockHelper from '../helpers/keyHelper';
 
 
 export default class WalletView extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {token: ""};
+    this.state = {token: "", user_id: "", label: ""};
 
     AsyncStorage.getItem('token').then((token) => { this.setState({ token: token }) } );
+    AsyncStorage.getItem('user_id').then((value) => this.setState({ user_id: value }));
+
   }
 
-  createKey() {
+  submitKey() {
       console.log(this.state.token);
     const api = new WalletRestApi(this.state.token);
     
-    /*
-    api.login(this.state.w, this.state.passwordText)
-    .then(response => {
-      if(response.success) {
-        AsyncStorage.setItem("token", response.token);
-        AsyncStorage.setItem("user_id", response.user_id);
-        this.retrieveKeys(response.user_id, response.token);
-        onSignIn().then(() => this.props.navigation.navigate("Main"));
-      }
-    })
-    .catch(err => console.log(err));
-    */
-
-    
-
+    api.generateKey(this.state.user_id).then((keysObject) => {
+        console.log(keysObject);
+        
+        });
   }
-
 
   render() {
     return (
@@ -46,13 +38,24 @@ export default class WalletView extends React.Component {
           backgroundColor="#6a51ae"
         />
         <HeaderComponent
-          title={"Generate Key"}
+          title={"Keys"}
           onPressHandler={() => this.props.navigation.dispatch(DrawerActions.openDrawer()) }
           source={require('../assets/drawer_navigation.png')}
         />
          <View style={styles.walletContainer}>
            <View style={{ margin: 10}}>
-             <ButtonWithActionComponent onPressHandler={() => { this.createKey()}} text={"Create New Wallet"}/>
+            <TextInput
+              style={{padding: 10, marginTop: 15,
+              marginBottom: 4, height: 40, width: 275,
+              backgroundColor: FORM_FIELD_BACKGROUND_COLOR,
+              borderRadius: 5, color: DETAIL_TEXT_COLOR}}
+              onChangeText={(label) => this.setState({label: label})}
+              keyboardType="numbers-and-punctuation"
+              placeholder="Label for Key Pair"
+              placeholderTextColor={DETAIL_TEXT_COLOR}
+            />
+             <ButtonComponent onPressHandler={() => { this.createKey()}} text={"Generate Key Pair"}/>
+             <ButtonComponent onPressHandler={() => { this.submitKey()}} text={"Submit"}/>
            </View>
       </View>
       </View>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AsyncStorage, StyleSheet, Text, View, Dimensions } from 'react-native';
+import { AsyncStorage, StyleSheet, Text, View } from 'react-native';
 import { APP_BACKGROUND_COLOR } from '../constants/styles.js';
 
 export default class BalanceHeaderComponent extends React.Component {
