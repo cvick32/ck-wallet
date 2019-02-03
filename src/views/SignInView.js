@@ -4,7 +4,7 @@ import { StyleSheet, Text, TextInput, View, Dimensions, AsyncStorage, StatusBar,
 import ButtonWithActionComponent from '../components/ButtonWithActionComponent';
 import { APP_BACKGROUND_COLOR, DETAIL_TEXT_COLOR, FORM_FIELD_BACKGROUND_COLOR } from '../constants/styles.js';
 import WalletRestApi from '../api/WalletRestApi';
-import {onSignIn} from '../helpers/auth';
+import {onSignIn} from '../helpers/authHelper';
 
 export default class SignInViewComponent extends React.Component {
 

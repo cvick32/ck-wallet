@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { SignedIn, SignedOut } from './src/config/navigation';
-import { isSignedIn } from "./src/helpers/auth";
+import { isSignedIn } from "./src/helpers/authHelper";
 
 export default class App extends React.Component {
   constructor(props) {

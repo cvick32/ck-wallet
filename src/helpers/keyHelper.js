@@ -1,9 +1,9 @@
-import { genKeyPair } from './coinHelper.js';
 var CryptoJS = require('crypto-js');
+var elliptic = require('elliptic');
+var base64js = require('base64-js');
+var ec = new elliptic.ec('secp256k1');
 
-export const genKey =  function(label, password) {
-        var promise = new Promise(function(resolve, reject) {});
-
+export const genKey =  function(label, publicKey) {
         var keypair = genKeyPair();
 
         var pbkdf = CryptoJS.algo.PBKDF2.create({ keySize: 8,
@@ -13,7 +13,7 @@ export const genKey =  function(label, password) {
                                                 });
 
         var salt = CryptoJS.lib.WordArray.random(32);
-        var encKey = pbkdf.compute(password, salt);
+        var encKey = pbkdf.compute(publicKey, salt);
 
         var iv = CryptoJS.lib.WordArray.random(16);
 
@@ -30,8 +30,30 @@ export const genKey =  function(label, password) {
             salt: CryptoJS.enc.Base64.stringify(salt)
         };
 
-        return promise.resolve(keyData);
+        return Promise.resolve(keyData);
 }
+
+
+const genKeyPair = function() {
+    var randString = CryptoJS.lib.WordArray.random(32).toString();
+
+    var key = ec.genKeyPair({ entropy: randString });
+
+    // Pubkey in form z||x||y where z is 0x04
+    var pubPoint = key.getPublic().encode();
+
+    var base64PubPoint = base64js.fromByteArray(pubPoint);
+
+    var privateKey = key.getPrivate().toArray();
+    var base64PrivateKey = base64js.fromByteArray(privateKey);
+
+    var keypair = {
+        pub: base64PubPoint,
+        priv: base64PrivateKey
+    };
+
+    return keypair;
+};
 
 export const getNewKey = function(id, label, password, api) {
     //console.log(id, label, password, api);

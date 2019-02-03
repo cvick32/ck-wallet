@@ -62,28 +62,6 @@ function decryptKey(key, password) {
     return privKey;
 };
 
-export const genKeyPair = function() {
-
-      var randString = CryptoJS.lib.WordArray.random(32).toString();
-
-      var key = ec.genKeyPair({ entropy: randString });
-
-      // Pubkey in form z||x||y where z is 0x04
-      var pubPoint = key.getPublic().encode();
-
-      var base64PubPoint = base64js.fromByteArray(pubPoint);
-
-      var privateKey = key.getPrivate().toArray();
-      var base64PrivateKey = base64js.fromByteArray(privateKey);
-
-      var keypair = {
-          pub: base64PubPoint,
-          priv: base64PrivateKey
-      };
-
-      return keypair;
-};
-
 function pubKeyToAddress(pubkey) {
     return pubkey;
 };

@@ -5,7 +5,7 @@ import TextInputWithLabelComponent from './TextInputWithLabelComponent';
 import ButtonWithActionComponent from './ButtonWithActionComponent';
 import WalletRestApi from '../api/WalletRestApi';
 import { sendToAddress } from '../helpers/coinHelper.js';
-import { getNewKey } from '../helpers/blockchainHelper.js';
+import { getNewKey } from '../helpers/keyHelper';
 
 export default class SendTransactionComponent extends React.Component {
   constructor(props) {

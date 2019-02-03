@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View, Button,TouchableHighlight} from 'react-native';
 import { NavigationActions, DrawerActions } from 'react-navigation';
-import { onSignOut,  } from '../helpers/auth';
+import { onSignOut } from '../helpers/authHelper';
 
 export default class SideBarView extends React.Component {
 
