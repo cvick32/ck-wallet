@@ -24,8 +24,8 @@ export default class WalletView extends React.Component {
     if (!this.state.keyPair) {
       this.setState({error: "Empty keypair"});
     } else {
-      console.log(keyPair);
-        api.generateKey(this.state.user_id).then((keysObject) => {
+      console.log(this.state.keyPair);
+        api.generateKey(this.state.user_id, this.state.keyPair).then((keysObject) => {
         console.log(keysObject);
         });
       }
@@ -40,20 +40,6 @@ export default class WalletView extends React.Component {
           this.state.keyPair = newKey;
         }
       );
-    }
-  }
-
-  handleText(event) {
-    const {name, type, value} = event.nativeEvent;
-    console.log(name);
-    console.log(type);
-    console.log(value);
-    if (name === "label") {
-      this.setState({label: value});
-      this.setState({error: ""});
-    } else {
-      this.setState({password: value});
-      this.setState({error: ""});
     }
   }
 
