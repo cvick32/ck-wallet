@@ -56,13 +56,9 @@ export default class WalletView extends React.Component {
           source={require('../assets/drawer_navigation.png')}
         />
          <View style={styles.walletContainer}>
-           <View style={{ margin: 10}}>
             <TextInput
               name="label"
-              style={{padding: 10, marginTop: 15,
-              marginBottom: 4, height: 40, width: 275,
-              backgroundColor: FORM_FIELD_BACKGROUND_COLOR,
-              borderRadius: 5, color: DETAIL_TEXT_COLOR}}
+              style={styles.textInput}
               onChangeText={(label) => this.setState({label: label, error: ""})}
               keyboardType="numbers-and-punctuation"
               placeholder="Label for Key Pair"
@@ -71,10 +67,7 @@ export default class WalletView extends React.Component {
             />
             <TextInput
               name="password"
-              style={{padding: 10, marginTop: 15,
-              marginBottom: 4, height: 40, width: 275,
-              backgroundColor: FORM_FIELD_BACKGROUND_COLOR,
-              borderRadius: 5, color: DETAIL_TEXT_COLOR}}
+              style={styles.textInput}
               onChangeText={(password) => this.setState({password: password, error: ""})}
               keyboardType="numbers-and-punctuation"
               secureTextEntry
@@ -82,11 +75,12 @@ export default class WalletView extends React.Component {
               placeholderTextColor={DETAIL_TEXT_COLOR}
               value={this.state.password}
             />
-             <ButtonComponent onPressHandler={() => { this.createKey()}} text={"Generate Key Pair"}/>
-             <ButtonComponent onPressHandler={() => { this.submitKey()}} text={"Submit"}/>
-             <Text style={{color: RED_COLOR}}>{this.state.error}</Text>
+            <View style={{margin: 10}} >
+              <ButtonComponent style={styles.button} onPressHandler={() => { this.createKey()}} text={"Generate Key Pair"}/>
+              <ButtonComponent style={styles.button} onPressHandler={() => { this.submitKey()}} text={"Submit"}/>
+              <Text style={{color: RED_COLOR}}>{this.state.error}</Text>
+            </View>
            </View>
-      </View>
       </View>
     );
   }
@@ -117,6 +111,19 @@ const styles = StyleSheet.create({
     width: 275,   
     backgroundColor: FORM_FIELD_BACKGROUND_COLOR,
     borderRadius: 5, 
+    color: DETAIL_TEXT_COLOR
+  },
+  button: {
+    margin: 10
+  },
+  textInput: {
+    padding: 10,
+    marginTop: 15,
+    marginBottom: 4,
+    height: 40, 
+    width: 275,
+    backgroundColor: FORM_FIELD_BACKGROUND_COLOR,
+    borderRadius: 5,
     color: DETAIL_TEXT_COLOR
   }
 })

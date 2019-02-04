@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, TextInput, Dimensions} from 'react-native';
+import {StyleSheet, View, Text, Dimensions} from 'react-native';
 import Accordion from '@ercpereda/react-native-accordion';
 import {RED_COLOR, APP_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR, BUTTON_BACKGROUND_COLOR, DETAIL_TEXT_COLOR} from '../constants/styles.js';
 

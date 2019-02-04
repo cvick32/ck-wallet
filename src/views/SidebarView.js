@@ -45,6 +45,12 @@ export default class SideBarView extends React.Component {
             <View style={[styles.items, styles.border]}>
               <Button title={"Generate Key"}
                 color={'white'}
+                onPress={() => this.props.navigation.navigate('GenKey')}
+              />
+            </View>
+            <View style={[styles.items, styles.border]}>
+              <Button title={"View Keys"}
+                color={'white'}
                 onPress={() => this.props.navigation.navigate('Key')}
               />
             </View>
