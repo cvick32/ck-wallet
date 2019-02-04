@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Dimensions, StatusBar, TextInput, AsyncStorage, Text } from 'react-native';
-import { APP_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR, DETAIL_TEXT_COLOR, RED_COLOR } from '../constants/styles';
+import { APP_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR, DETAIL_TEXT_COLOR, RED_COLOR, BUTTON_BACKGROUND_COLOR } from '../constants/styles';
 import { DrawerActions } from 'react-navigation';
 import ButtonComponent from '../components/ButtonComponent';
 import HeaderComponent from '../components/HeaderComponent';
@@ -24,20 +24,18 @@ export default class WalletView extends React.Component {
     if (!this.state.keyPair) {
       this.setState({error: "Empty keypair"});
     } else {
-      console.log(this.state.keyPair);
-        api.generateKey(this.state.user_id, this.state.keyPair).then((keysObject) => {
+      api.generateKey(this.state.user_id, this.state.keyPair).then((keysObject) => {
         console.log(keysObject);
-        });
-      }
+      });
+    }
   }
 
   createKey() {
     if (this.state.label === "" || this.state.password === "") {
-      this.setState(({error: "Label and Password fields are required"}));
+      this.setState({error: "Label and Password fields are required"});
     } else {
-      
       genKey(this.state.label, this.state.password).then((newKey) => {
-          this.state.keyPair = newKey;
+          this.setState({keyPair: newKey});
         }
       );
     }
@@ -58,7 +56,7 @@ export default class WalletView extends React.Component {
          <View style={styles.walletContainer}>
             <TextInput
               name="label"
-              style={styles.textInput}
+              style={styles.inputs}
               onChangeText={(label) => this.setState({label: label, error: ""})}
               keyboardType="numbers-and-punctuation"
               placeholder="Label for Key Pair"
@@ -67,7 +65,7 @@ export default class WalletView extends React.Component {
             />
             <TextInput
               name="password"
-              style={styles.textInput}
+              style={styles.inputs}
               onChangeText={(password) => this.setState({password: password, error: ""})}
               keyboardType="numbers-and-punctuation"
               secureTextEntry
@@ -76,10 +74,11 @@ export default class WalletView extends React.Component {
               value={this.state.password}
             />
             <View style={{margin: 10}} >
-              <ButtonComponent style={styles.button} onPressHandler={() => { this.createKey()}} text={"Generate Key Pair"}/>
-              <ButtonComponent style={styles.button} onPressHandler={() => { this.submitKey()}} text={"Submit"}/>
+              <ButtonComponent style={styles.button} color={BUTTON_BACKGROUND_COLOR} onPressHandler={() => { this.createKey()}} text={"Generate Key Pair"}/>
+              {this.state.keyPair && <ButtonComponent style={styles.button} color={RED_COLOR} onPressHandler={() => { this.submitKey()}} text={"Submit Generated Key"}/>}
               <Text style={{color: RED_COLOR}}>{this.state.error}</Text>
             </View>
+            {this.state.keyPair && <Text style={styles.inputs}>Generated Public Key: {this.state.keyPair.publicKey}</Text>}
            </View>
       </View>
     );
@@ -115,15 +114,5 @@ const styles = StyleSheet.create({
   },
   button: {
     margin: 10
-  },
-  textInput: {
-    padding: 10,
-    marginTop: 15,
-    marginBottom: 4,
-    height: 40, 
-    width: 275,
-    backgroundColor: FORM_FIELD_BACKGROUND_COLOR,
-    borderRadius: 5,
-    color: DETAIL_TEXT_COLOR
   }
 })

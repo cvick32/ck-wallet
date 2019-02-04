@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Dimensions } from 'react-native';
 import ButtonComponent from '../components/ButtonComponent'
-import { APP_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR, DETAIL_TEXT_COLOR } from '../constants/styles.js'
+import { APP_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR, DETAIL_TEXT_COLOR , BUTTON_BACKGROUND_COLOR} from '../constants/styles.js'
 
 export default class ForgotPasswordView extends React.Component {
   render() {
@@ -15,7 +15,7 @@ export default class ForgotPasswordView extends React.Component {
           placeholderTextColor={DETAIL_TEXT_COLOR}
         />
 
-        <ButtonComponent text="Send Recovery Email" />
+        <ButtonComponent color={BUTTON_BACKGROUND_COLOR} text="Send Recovery Email" />
       </View>
     );
   }

@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Clipboard } from 'react-native';
 import { BarCodeScanner, Permissions } from 'expo';
 import ButtonComponent from './ButtonComponent';
 
+import BUTTON_BACKGROUND_COLOR from '../constants/styles';
+
 export default class BarcodeScannerComponent extends React.Component {
   state = {
     hasCameraPermission: null,
@@ -28,7 +30,7 @@ export default class BarcodeScannerComponent extends React.Component {
             style={StyleSheet.absoluteFill}
           />
           <View style={{marginBottom: 20,}}>
-            <ButtonComponent onPressHandler={() => this.props.navigation.navigate("Main")} text="Go Back"/>
+            <ButtonComponent color={BUTTON_BACKGROUND_COLOR} onPressHandler={() => this.props.navigation.navigate("Main")} text="Go Back"/>
           </View>
         </View>
       );

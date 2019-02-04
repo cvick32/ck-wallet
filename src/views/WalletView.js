@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Dimensions, StatusBar, TextInput, AsyncStorage } from 'react-native';
-import { APP_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR, DETAIL_TEXT_COLOR } from '../constants/styles';
+import { APP_BACKGROUND_COLOR, FORM_FIELD_BACKGROUND_COLOR, DETAIL_TEXT_COLOR, BUTTON_BACKGROUND_COLOR } from '../constants/styles';
 import { DrawerActions } from 'react-navigation';
 import ButtonComponent from '../components/ButtonComponent';
 import HeaderComponent from '../components/HeaderComponent';
@@ -56,10 +56,7 @@ export default class WalletView extends React.Component {
         />
          <View style={styles.walletContainer}>
          <TextInput
-              style={{padding: 10, marginTop: 15,
-              marginBottom: 4, height: 40, width: 275,
-              backgroundColor: FORM_FIELD_BACKGROUND_COLOR,
-              borderRadius: 5, color: DETAIL_TEXT_COLOR}}
+              style={styles.inputs}
               onChangeText={(walletName) => this.setState({walletName: walletName})}
               keyboardType="numbers-and-punctuation"
               placeholder="Wallet Name"
@@ -73,7 +70,7 @@ export default class WalletView extends React.Component {
               placeholderTextColor={DETAIL_TEXT_COLOR}
             />
            <View style={{ margin: 10}}>
-             <ButtonComponent onPressHandler={() => { this.createWallet()}} text={"Create New Wallet"}/>
+             <ButtonComponent color={BUTTON_BACKGROUND_COLOR} onPressHandler={() => { this.createWallet()}} text={"Create New Wallet"}/>
            </View>
       </View>
       </View>

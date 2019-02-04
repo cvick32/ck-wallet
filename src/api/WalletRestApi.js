@@ -12,7 +12,6 @@ export default class WalletRestApi extends RestClient {
   }
 
   login(name, password) {
-    //Returns a Promise with the response
     return this.POST('/api/authenticate', {"name": name, "password": CryptoJS.SHA3(password).toString()});
   }
 
@@ -21,7 +20,6 @@ export default class WalletRestApi extends RestClient {
   }
 
   generateKey(user_id, keypair) {
-    console.log(keypair);
     return this.POST('/api/users/' + user_id + '/keys', keypair);
   }
 
