@@ -51,7 +51,7 @@ export default class WalletView extends React.Component {
           backgroundColor="#6a51ae"
         />
         <HeaderComponent
-          title={"Keys"}
+          title={"Generate Key"}
           onPressHandler={() => this.props.navigation.dispatch(DrawerActions.openDrawer()) }
           source={require('../assets/drawer_navigation.png')}
         />
