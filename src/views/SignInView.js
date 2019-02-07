@@ -6,6 +6,8 @@ import { APP_BACKGROUND_COLOR, DETAIL_TEXT_COLOR, FORM_FIELD_BACKGROUND_COLOR } 
 import WalletRestApi from '../api/WalletRestApi';
 import {onSignIn} from '../helpers/authHelper';
 
+
+
 export default class SignInViewComponent extends React.Component {
 
   constructor(props) {
@@ -20,8 +22,10 @@ export default class SignInViewComponent extends React.Component {
     .then(response => {
       if(response.success) {
         AsyncStorage.setItem("token", response.token);
-        AsyncStorage.setItem("user_id", response.user_id);
-        this.retrieveKeys(response.user_id, response.token);
+        console.log(response.token);
+        //console.log(decodeToken(response.token));
+        AsyncStorage.setItem("user_id", '5c51ea1ceca7f0d58e967b29');
+        this.retrieveKeys('5c51ea1ceca7f0d58e967b29', response.token);
         onSignIn().then(() => this.props.navigation.navigate("Main"));
       }
     })
@@ -34,6 +38,7 @@ export default class SignInViewComponent extends React.Component {
     api.getKeys(user_id)
     .then(response => {
       AsyncStorage.setItem("labelAndKeys", JSON.stringify(response.keys));
+      console.log('thererere ' + response.keys);
       var publickeys = [];
       const keys = response.keys;
       for (var counter=0; counter < keys.length; counter++) {
@@ -52,7 +57,7 @@ export default class SignInViewComponent extends React.Component {
       for(var j=0; j < publickeys.length; j++) {
         api.getTxos(publickeys[j])
         .then(response => {
-          //console.log(response);
+          console.log(response);
           if(response.txos === null) {
             //do nothing
           } else {

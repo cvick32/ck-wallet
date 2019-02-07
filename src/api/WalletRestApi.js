@@ -47,4 +47,8 @@ export default class WalletRestApi extends RestClient {
     return this.POST('/api/blockchain/util/sendrawtransaction', {'tx': tx});
   }
 
+  deleteKey(user_id, key_id) {
+    return this.DELETE('/api/users/' + user_id + '/keys/' + key_id);
+  }
+
 }

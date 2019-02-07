@@ -38,7 +38,17 @@ export default class WalletView extends React.Component {
     AsyncStorage.getItem('labelAndKeys').then((keys) => this.setState({ keys: JSON.parse(keys)}));
   }
 
-  deleteKey
+  deleteKey(item_id) {
+      console.log(item_id);
+      const api = new WalletRestApi(this.state.token);
+
+      api.deleteKey(this.state.user_id, item_id)
+      .then(response => {
+          console.log(response);
+      });
+
+      this.refreshKeys();
+  }
 
   render() {
     return (
@@ -58,15 +68,16 @@ export default class WalletView extends React.Component {
                 data={this.state.keys}
                 renderItem={({item}) =>
                 <View key={item._id}>
+                    
                     <Text style={styles.text}>
                     <Text style={styles.bold}>Label: </Text>{item.label}{"\n"}
                     <Text style={styles.bold}>Public Key: </Text> {item.publicKey}{"\n"}
                     <Text style={styles.bold}>Cipher Text: </Text> {item.cipherText}{"\n"}
                     <Text style={styles.bold}>IV: </Text> {item.iv}{"\n"}
                     <Text style={styles.bold}>Salt: </Text> {item.salt}</Text>
-                    <View style={{ margin: 10 }}>
                         <ButtonComponent color={RED_COLOR} onPressHandler={() => { this.deleteKey(item._id)}} text={"Delete Key"}/>
-                    </View>
+                    
+                   
                 </View>}
                 keyExtractor={(item, index) => index.toString()}
             />
